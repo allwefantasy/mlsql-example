@@ -6,7 +6,7 @@ set excelPath="" where type="defaultParam";
 !python conf "runIn=driver";
 !python conf "dataMode=model";
 
-!ray on ${targetTable} '''
+!ray on "${targetTable}" '''
 
 import io
 import ray
