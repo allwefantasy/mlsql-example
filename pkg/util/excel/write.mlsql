@@ -1,0 +1,30 @@
+set targetTable="" where type="defaultParam";
+set excelPath="" where type="defaultParam";
+
+!python env "PYTHON_ENV=:";
+!python conf "schema=st(field(file,binary))";
+!python conf "runIn=driver";
+!python conf "dataMode=model";
+
+!ray on ${targetTable} '''
+
+import io
+import ray
+from pyjava.api.mlsql import RayContext
+import pandas as pd
+
+ray_context = RayContext.connect(globals(),None)
+
+rows = [item for item in RayContext.collect_from(ray_context.data_servers())]
+
+df = pd.DataFrame(data=rows)
+output = io.BytesIO()
+writer = pd.ExcelWriter(output, engine='xlsxwriter')
+df.to_excel(writer)
+writer.save()
+xlsx_data = output.getvalue()
+context.build_result([{"file":xlsx_data}])
+
+''' named excel_data;
+
+!saveFile _ -i excel_data -o "${excelPath}";
