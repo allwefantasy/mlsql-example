@@ -4,8 +4,8 @@
     "init": "",
     "pythonDeps":[
        {
-         "name":"pandas",
-         "version":">=2.1"
+         "name":"xlsxwriter",
+         "version":"=1.3.7"
        }
      ],
    "deps":[
