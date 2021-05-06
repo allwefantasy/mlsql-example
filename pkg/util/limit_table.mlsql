@@ -1,3 +1,3 @@
---include本项目脚本要写项目名称
+-- include script in the same project please use project name.
 include local.`mlsql-example.pkg.util.params`;
 select * from ${targetTable} limit ${size} as output;
