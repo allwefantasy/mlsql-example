@@ -1,0 +1,23 @@
+set excelPath="" where type="defaultParam";
+load binaryFile.`${excelPath}` as excel_table;
+
+!python env "PYTHON_ENV=:";
+!python conf "schema=st(field(a,string),field(b,string))";
+!python conf "runIn=driver";
+!python conf "dataMode=model";
+
+!ray on excel_table '''
+
+import io
+import ray
+from pyjava.api.mlsql import RayContext
+import pandas as pd
+
+ray_context = RayContext.connect(globals(),None)
+excel_file_binary_list = [item for item in RayContext.collect_from(ray_context.data_servers())]
+
+df = pd.read_excel(io.BytesIO(excel_file_binary_list[0]["content"]))
+
+context.build_result([row for row in df.to_dict('records')])
+
+''' named excel_data;
