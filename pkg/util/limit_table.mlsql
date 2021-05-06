@@ -1,0 +1,3 @@
+set targetTable="" where type="defaultParam";
+set size="100" where type="defaultParam";
+select * from ${targetTable} limit ${size} as output;
