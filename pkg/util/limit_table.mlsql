@@ -1,3 +1,3 @@
 -- include script in the same project please use project name.
-include local.`github.com/allewfantasy/mlsql-example.pkg.util.params`;
+include local.`github.com/allwefantasy/mlsql-example.pkg.util.params`;
 select * from ${targetTable} limit ${size} as output;
