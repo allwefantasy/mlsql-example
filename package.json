@@ -1,0 +1,17 @@
+{
+    "version": "1.0",
+    "main": "",
+    "init": "",
+    "pythonDeps":[
+       {
+         "name":"pandas",
+         "version":">=2.1"
+       }
+     ],
+   "deps":[
+       {
+         "name":"github.com/allwefantasy/lib-util",
+         "version":"625643d21187ff486c58579161182c9414ec71ec"
+       }
+     ]
+}
