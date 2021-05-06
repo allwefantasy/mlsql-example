@@ -6,6 +6,10 @@
        {
          "name":"xlsxwriter",
          "version":"==1.2.0"
+       },
+       {
+           "name":"xlrd",
+           "version":"==1.2.0"
        }
      ],
    "deps":[
