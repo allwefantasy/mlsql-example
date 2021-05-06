@@ -2,7 +2,6 @@ set excelPath="" where type="defaultParam";
 load binaryFile.`${excelPath}` as excel_table;
 
 !python env "PYTHON_ENV=:";
-!python conf "schema=st(field(a,string),field(b,string))";
 !python conf "runIn=driver";
 !python conf "dataMode=model";
 
